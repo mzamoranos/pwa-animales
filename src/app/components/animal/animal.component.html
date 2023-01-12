@@ -1,0 +1,35 @@
+<p>animal works!</p>
+
+<div class="container mt-5">
+    <div
+      *ngIf="animal"
+      class="row animate__animated animate__bounce animate__fadeIn"
+    >
+      <div class="card" fxLayout="row" fxLayoutAlign="center center">
+        <div  fxLayout ="row wrap" fxLayoutAlign ="start center" fxLayoutGap ="32px">
+          <mat-card  class =" mat-elevation-z4 " >
+          <mat-card-header>
+          <mat-card-title>{{ animal.title }}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-lg-image
+          style="width: 80%; height: 80%"
+          class="rounded"
+          src="https://zaragoza.es{{ animal.foto }}"
+          alt=""
+        /> 
+      
+        </mat-card>
+      <div >
+      <p><strong>Nombre: </strong>{{ animal.title }}</p>
+      <p><strong>Identifier: </strong>{{ animal.id }}</p>
+        <p><strong>Especie: </strong>{{ animal.especie}}</p>
+        <p><strong>Raza: </strong>{{ animal.raza}}</p>
+        <p><strong>Sexo: </strong>{{ animal.sexo }}</p>
+        
+      </div>
+      <div class="col-md-3">
+        <a [routerLink]="['/']" class="btn btn-danger">Back</a>
+      </div>
+    </div>
+  </div>
+</div>
