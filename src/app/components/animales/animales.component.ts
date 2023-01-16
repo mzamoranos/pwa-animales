@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
+import { Router } from '@angular/router'
 import { catchError, EMPTY, take } from 'rxjs'
 import { Animal } from 'src/app/models/animal.interface'
 import { AnimalesService } from 'src/app/sevices/animales.service'
@@ -10,9 +12,13 @@ import { AnimalesService } from 'src/app/sevices/animales.service'
 })
 export class AnimalesComponent implements OnInit {
   public animales: Animal[] = []
-  constructor(private animalesService: AnimalesService) {
+  myDataSource!: MatTableDataSource<Animal>
+
+  constructor(
+    private animalesService: AnimalesService,
+    private router: Router,
+  ) {
     this.animales = new Array<Animal>()
-    // this processing = false;
   }
 
   ngOnInit(): void {
@@ -28,7 +34,13 @@ export class AnimalesComponent implements OnInit {
       )
       .subscribe((animales: any) => {
         this.animales = animales.result
+
+        this.myDataSource = new MatTableDataSource<Animal>(this.animales)
       })
     //((a:any) => {this.animales = a.result})
+  }
+
+  showAnimal(id: number) {
+    this.router.navigateByUrl('/animal/' + id)
   }
 }

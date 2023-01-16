@@ -1,4 +1,4 @@
-<p>animal works!</p>
+<h1>Animal seleccionado</h1>
 
 <div class="container mt-5">
     <div
@@ -16,20 +16,40 @@
           class="rounded"
           src="https://zaragoza.es{{ animal.foto }}"
           alt=""
-        /> 
+        />
       
         </mat-card>
-      <div >
-      <p><strong>Nombre: </strong>{{ animal.title }}</p>
-      <p><strong>Identifier: </strong>{{ animal.id }}</p>
-        <p><strong>Especie: </strong>{{ animal.especie}}</p>
-        <p><strong>Raza: </strong>{{ animal.raza}}</p>
-        <p><strong>Sexo: </strong>{{ animal.sexo }}</p>
-        
+        <div class="col-md-3">
+          <a [routerLink]="['/']" class="btn btn-danger">Back</a>
+        </div>
       </div>
-      <div class="col-md-3">
-        <a [routerLink]="['/']" class="btn btn-danger">Back</a>
-      </div>
+      <mat-accordion> 
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <button mat-button color="primary">Show all details</button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Details">
+              <p><strong>Nombre: </strong>{{ animal.title }}</p>
+              <p><strong>Identifier: </strong>{{ animal.id }}</p>
+              <p><strong>Especie: </strong>{{ animal.especie}}</p>
+              <p><strong>Raza: </strong>{{ animal.raza}}</p>
+              <p><strong>Sexo: </strong>{{ animal.sexo }}</p>
+             </mat-tab>
+             <mat-tab label="veterinario">
+              <p><strong>Peligroso: </strong>{{ animal.peligroso }}</p>
+              <p><strong>Microchip: </strong>{{ animal.microchip }}</p>
+              <p><strong>Cartilla: </strong>{{ animal.cartilla}}</p>
+              <p><strong>Rabia: </strong>{{ animal.rabia}}</p>
+              <p><strong>FechaRabia: </strong>{{ animal.fechaRabia }}</p>
+              <p><strong>Esterilizado: </strong>{{ animal.esterilizado }}</p>
+             </mat-tab>
+
+    </mat-tab-group>
+    </mat-expansion-panel>
+    </mat-accordion>
     </div>
-  </div>
+
 </div>

@@ -1,6 +1,30 @@
-<p>animales works!</p>
+
 <div class="container">
     <h1> Animales </h1>
+    <div class="spinner">
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="animales">
+          <mat-progress-spinner diameter="100"></mat-progress-spinner>
+        </div>
+      </div>
+
+      <table mat-table [dataSource]="myDataSource" matSort>
+        <!--ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td class="pointer" (click)="showAnimal(animal.id)" mat-cell *matCellDef="let animal">{{ animal.id }}</td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="especie">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ESPECIE</th>
+          <td class="pointer" (click)="showAnimal(animal.especie)" mat-cell *matCellDef="let animal">{{ animal.especie }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NAME</th>
+            <td class="pointer" (click)="showAnimal(animal.title)" mat-cell *matCellDef="let animal">{{ animal.title }}</td>
+        </ng-container>
+</table>
 
     <ul classs="list-group">
         <a *ngFor="let animal of animales" [routerLink]="['/animal', animal.id]" class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn">
